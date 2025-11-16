@@ -63,3 +63,17 @@ const filterActiveUsers = <T extends {isActive: boolean}>(users: T[]):T[]=>{
     return activeUsers;
 }
 
+
+
+interface Book {
+    title: string;
+    author: string;
+    publishedYear: number;
+    isAvailable: boolean;
+}
+
+const printBookDetails = (obj: Book):string=>{
+
+    return `Title: ${obj.title}, Author: ${obj.author}, Published: ${obj.publishedYear}, Available: ${obj.isAvailable === true ? 'Yes' : 'No'}`
+}
+
