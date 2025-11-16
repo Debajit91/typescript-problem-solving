@@ -49,3 +49,17 @@ const filterByRating = (arr: Item[]): Item[] => {
 
 
 
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    isActive: boolean;
+}
+
+const filterActiveUsers = <T extends {isActive: boolean}>(users: T[]):T[]=>{
+
+    const activeUsers = users.filter(user => typeof user.isActive === 'boolean' && user.isActive);
+
+    return activeUsers;
+}
+
