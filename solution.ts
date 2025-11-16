@@ -1,49 +1,51 @@
-const formatValue = (value: string | number | boolean):string | number | boolean =>{
-
-    if(typeof value === 'string'){
-        return value.toUpperCase();
-    }
-
-    else if (typeof value === 'number'){
-        return value * 10;
-    } 
-
-    else return !value;
-}
+const formatValue = (
+  value: string | number | boolean
+): string | number | boolean => {
+  if (typeof value === "string") {
+    return value.toUpperCase();
+  } else if (typeof value === "number") {
+    return value * 10;
+  } else return !value;
+};
 
 
 
-const getLength = (value: string | any[]): number =>{
+const getLength = (value: string | any[]): number => {
+  if (typeof value === "string") {
+    return value.length;
+  } else if (Array.isArray(value)) {
+    return value.length;
+  }
 
-    if(typeof value === 'string'){
-        return value.length;
-    }
+  return 0;
+};
 
-    else if (Array.isArray(value)){
-        return value.length;
-    }
-
-    return 0;
-
-}
 
 
 class Person {
-    name: string;
-    age: number;
+  constructor(public name: string, public age: number) {
+  }
 
-    constructor(name:string, age:number){
-        this.name = name;
-        this.age = age;
-    }
-
-    getDetails(){
-        return `Name: ${this.name}, Age: ${this.age}`
-    }
+  getDetails() {
+    return `Name: ${this.name}, Age: ${this.age}`;
+  }
 }
 
-const person1 = new Person('John Doe', 30);
 
-const person2 = new Person('Alice', 25);
+
+
+interface Item {
+    title: string;
+    rating: number;
+}
+
+
+const filterByRating = (arr: Item[]): Item[] => {
+  
+    const ratingWithFour = arr.filter((item) => item.rating >= 4);
+
+    return ratingWithFour;
+};
+
 
 
