@@ -23,7 +23,7 @@ type → Merge হয় না (Error দেয়)
 Union, Tuple, Primitive Alias
 এগুলো শুধু type দিয়ে করা যায়, interface দিয়ে নয়।
 
-সংক্ষেপে
+• সংক্ষেপে
 interface মূলত অবজেক্ট স্ট্রাকচার নির্ধারণে ব্যবহৃত হয় এবং declaration merging সমর্থন করে।
 
 type আরও বহুমুখী—union, tuple, primitive alias সহ জটিল টাইপ তৈরিতে ব্যবহৃত হয়।
@@ -51,3 +51,33 @@ keyof Person
 
 তাহলে Person type এর property name গুলো নিয়ে একটি union type বানাবে।
 "name" | "age"
+
+##
+# TypeScript-এ any, unknown, never এর মধ্যে পার্থক্য কি?
+
+TypeScript-এ any, unknown, never দেখতে একই রকম হলেও তাদের কাজ ভিন্ন ভিন্ন।
+
+any
+
+• আমরা যখন any ব্যবহার করি তখন TypeScript কোন type চেক করে না। অনেকটা টাইপ সিস্টেম থেকে পুরোপুরি বেরিয়ে যাওয়ার মতো আচরণ করে।
+
+• সাধারণত ব্যবহার করা উচিত নয়, কারণ টাইপ সেফটি নষ্ট করে।
+
+unknown
+
+• any এর মতো যেকোন ভ্যালু রাখা যায়, কিন্তু ব্যবহার করার আগে typeof এর মাধ্যমে টাইপ চেক করতেই হয়। unknwon কে টাইপ-সেইফ any বলা যায়।
+
+• সরাসরি অন্য টাইপে অ্যাসাইন করতে গেলে এরর দেবে।
+
+• unknwon সাধারণত
+    ** API থেকে আসা ডাটা এর ক্ষেত্রে
+    ** JSON.parse করা করা এবং
+    ** যেকোন অজানা ইনপুট এর ক্ষেত্রে ব্যবহার করা হয়।
+
+never
+
+• never টাইপ কখনো কোন ভ্যালু ধারণ করে না।
+
+• সাধারণত:
+    ** যেসব ফাংশন কখনো return করে না (throw বা infinite loop),
+    ** অথবা exhaustive type checking-এর ক্ষেত্রে ব্যবহৃত হয়।
