@@ -88,21 +88,40 @@ const printBookDetails = (obj: Book):string=>{
 
 
 
-const getUniqueValues = (arr1: (string |number[]), arr2:(string|number[])): string|number[] =>{
-    const newArray = array1.concat(array2);
-    const unique: (string|number[]) = []
-    for(let e of newArray){
-        if(!unique.includes(e)){
-            unique.push(e)
+const getUniqueValues = (
+  arr1: (string |number)[], 
+  arr2: (string|number)[]
+): (string|number)[] => {
+  
+  const newArray: (string | number)[] = [];
+  let k = 0;
+  
+  for(let i = 0; i <arr1.length; i++){
+    newArray[k] = arr1[i];
+    k++
+  }
+
+  for(let j = 0; j < arr2.length; j++){
+      let found = false 
+
+      for(let i = 0; i < arr1.length; i++){
+        
+        if(arr2[j] === arr1[i]){
+          found = true;
+          break;
+
         }
+      }
+
+      if(found === false){
+        newArray[k] = arr2[j];
+        k++;
+      }
     }
-    return unique;
+    
+    return newArray;
 }
-const array1 = [1, 2, 3, 4, 5];
-const array2 = [3, 4, 5, 6, 7];
 
-
-// console.log(getUniqueValues(array1, array2));
 
 
 
