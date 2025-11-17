@@ -122,7 +122,9 @@ const calculateTotalPrice = (products: Product[] ): number =>{
 
     const totalPrice = products
 
-    .map(product => (product.discount ? ((product.price * product.quantity) - (product.price * product.quantity) * (product.discount/100)) : (product.price * product.quantity)))
+    .map(product => 
+      {const basePrice = product.price * product.quantity;
+      return product.discount ? basePrice - basePrice * (product.discount/100) : basePrice})
 
     .reduce((acc, sum)=> sum =  acc + sum, 0);
     
@@ -131,6 +133,8 @@ const calculateTotalPrice = (products: Product[] ): number =>{
     return totalPrice;
 
 }
+
+
 
 
 
