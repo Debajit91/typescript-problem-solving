@@ -35,9 +35,10 @@ class Person {
   }
 
   getDetails() {
-    return `Name: ${this.name}, Age: ${this.age}`;
+    return `'Name: ${this.name}, Age: ${this.age}'`;
   }
 }
+
 
 
 
@@ -57,12 +58,16 @@ const filterByRating = (arr: Item[]): Item[] => {
 
 
 
+
+
 const filterActiveUsers = <T extends {isActive: boolean}>(users: T[]):T[]=>{
 
     const activeUsers = users.filter(user => typeof user.isActive === 'boolean' && user.isActive);
 
     return activeUsers;
 }
+
+
 
 
 
@@ -76,8 +81,29 @@ interface Book {
 
 const printBookDetails = (obj: Book):string=>{
 
-    return `Title: ${obj.title}, Author: ${obj.author}, Published: ${obj.publishedYear}, Available: ${obj.isAvailable === true ? 'Yes' : 'No'}`
+    const bookDetails = `Title: ${obj.title}, Author: ${obj.author}, Published: ${obj.publishedYear}, Available: ${obj.isAvailable === true ? 'Yes' : 'No'}`
+
+    return bookDetails;
 }
+
+
+
+const getUniqueValues = (arr1: (string |number[]), arr2:(string|number[])): string|number[] =>{
+    const newArray = array1.concat(array2);
+    const unique: (string|number[]) = []
+    for(let e of newArray){
+        if(!unique.includes(e)){
+            unique.push(e)
+        }
+    }
+    return unique;
+}
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [3, 4, 5, 6, 7];
+
+
+// console.log(getUniqueValues(array1, array2));
+
 
 
 
@@ -95,13 +121,17 @@ const calculateTotalPrice = (products: Product[] ): number =>{
     }
 
     const totalPrice = products
-    .map(product => product.price * product.quantity)
-    .reduce((acc, sum)=> acc + sum, 0);
+
+    .map(product => (product.discount ? ((product.price * product.quantity) - (product.price * product.quantity) * (product.discount/100)) : (product.price * product.quantity)))
+
+    .reduce((acc, sum)=> sum =  acc + sum, 0);
+    
+    
 
     return totalPrice;
 
-
 }
+
 
 
 
