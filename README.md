@@ -81,3 +81,37 @@ never
 • সাধারণত:
     ** যেসব ফাংশন কখনো return করে না (throw বা infinite loop),
     ** অথবা exhaustive type checking-এর ক্ষেত্রে ব্যবহৃত হয়।
+
+##
+# TypeScript-এ enums এর ব্যবহার কি? numeric enum এবং string enum এর একটি করে উদাহরণ।
+
+TypeScript-এ enum (Enumeration) হলো একটি বিশেষ টাইপ, যা হচ্ছে fixed string literal কিংবা fixed constant এর সেট।
+
+• enum কোডকে আরও রিডেবল, মেইনটেইনেবল এবং টাইপ-সেইফ করে।
+
+• enum টাইপ এবং ভ্যালু দুইভাবেই ব্যবহার করা যায়।
+
+• Magic number বা random string বারবার লেখার দরকার পড়ে না
+
+• Autocomplete support খুব ভালভাবে কাজ করে
+
+• তবে অনেকেই enums এর পরিবর্তে as const ব্যবহার করার পরামর্শ দেন।
+
+## numeric enum এর উদাহরণ
+Numeric enum-এ প্রতিটি মানের সাথে অটোমেটিক index নম্বর থাকে
+
+enum Status {
+  Success = 1,
+  Failed = 5,
+  Pending = 10
+}
+
+## string enum এর উদাহরণ
+String enum এ প্রতিটি মানকে string হিসেবে define করতে হয়।
+
+enum UserRoles {
+    Admin = "Admin", 
+    Editor= "Editor",
+    Viewer = "Viewer"
+}
+
