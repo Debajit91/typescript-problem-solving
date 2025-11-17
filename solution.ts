@@ -79,3 +79,30 @@ const printBookDetails = (obj: Book):string=>{
     return `Title: ${obj.title}, Author: ${obj.author}, Published: ${obj.publishedYear}, Available: ${obj.isAvailable === true ? 'Yes' : 'No'}`
 }
 
+
+
+interface Product{
+    name: string;
+    price: number;
+    quantity: number;
+    discount? : number;
+}
+
+const calculateTotalPrice = (products: Product[] ): number =>{
+
+    if(products.length === 0){
+        return 0;
+    }
+
+    const totalPrice = products
+    .map(product => product.price * product.quantity)
+    .reduce((acc, sum)=> acc + sum, 0);
+
+    return totalPrice;
+
+
+}
+
+
+
+
