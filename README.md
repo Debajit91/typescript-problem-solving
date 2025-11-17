@@ -115,3 +115,43 @@ enum UserRoles {
     Viewer = "Viewer"
 }
 
+
+##
+# TypeScript- এ union এবং intersection টাইপ ব্যবহারের একটি করে উদাহরণ। 
+
+### union type
+মানে হলো একাধিক টাইপের মধ্যে যেকোনো একটি
+অর্থাৎ একটি ভ্যারিয়েবল বা প্যারামিটার একাধিক টাইপের যেকোনো একটি হতে পারে।
+
+উদাহরণ: 
+function printId(id: string | number){
+    console.log("ID is:", id )
+}
+
+printId(101);
+printId("AB-77");
+
+এখানে id যেকোন টাইপ হতে পারে string অথবা number।
+
+### intersection type
+মানে হলো একাধিক টাইপকে মিলিয়ে একটি নতুন টাইপ তৈরী। অর্থাৎ, দুই বা ততোধিক টাইপের সবগুলো property মিলিয়ে একটি টাইপ তৈরি করা।
+
+উদাহরণ:
+type NameDetails = {
+    name: string;
+};
+
+type ContactDetails = {
+    email: string;
+    phone: string;
+}
+
+type User = NameDetails & ContactDetails;
+
+const user: User = {
+    name: "Dev",
+    email: "deb@gmail.com"
+    phone: "01783939399"
+};
+
+এখানে User টাইপে NameDetails + ContactDetails — দুইটাই থাকতে হবে।
